@@ -51,7 +51,7 @@ function defaultState(){
       instagram: "@ismaro_tuban",
       blog: "https://ismarotuban.blogspot.com/",
       maps: "https://maps.google.com/?q=UIN+Walisongo+Semarang",
-      footerTagline: "Organisasi Daerah Kabupaten Tuban x Nurcreativ",
+      footerTagline: "Organisasi Mahasiswa Daerah Kabupaten Tuban x Nurcreative",
       footerCopy: "© 2026 ISMARO — Ikatan Silaturahmi Mahasiswa Ronggolawe. Hak cipta dilindungi."
     },
     bph: clone(BPH_AWAL),
@@ -420,7 +420,7 @@ function loadBlogFeed(){
 function renderFooter(){
   const m = state.meta;
   $("#footKepanjangan").textContent = m.kepanjangan || "";
-  $("#footTagline").textContent = m.footerTagline || "Organisasi Daerah Kabupaten Tuban x Nurcreativ";
+  $("#footTagline").textContent = m.footerTagline || "Organisasi Mahasiswa Daerah Kabupaten Tuban x Nurcreative";
   $("#footCopy").textContent = m.footerCopy ||
     ("© " + new Date().getFullYear() + " ISMARO — " + (m.kepanjangan || "") + ". Hak cipta dilindungi.");
   $("#footLinks").innerHTML = $$("#nav a").map(a =>
