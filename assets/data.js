@@ -220,7 +220,7 @@ const AD_ART = {
       "Selanjutnya demi terselenggara segala kegiatan dan menjaga keseimbangan organisasi, maka perlu disusun Anggaran Dasar dan Anggaran Rumah Tangga (AD/ART) sebagai berikut:"
     ] },
     { bab: "BAB I — Nama, Waktu dan Tempat Kedudukan", pasal: [
-      { no: "Pasal 1", judul: "Nama", isi: "Organisasi ini bernama Ikatan Silaturahmi Mahasiswa Ronggolawe disingkat ISMARO." },
+      { no: "Pasal 1", judul: "Nama", isi: "Organisasi ini bernama Ikatan Silaturahmi Mahasiswa Ronggolawe disingkat ISMARO Tuban." },
       { no: "Pasal 2", judul: "Waktu dan Tempat Kedudukan", isi: "ISMARO berdiri pada Hari Minggu, 27 Nopember 2016 dan berkedudukan di Universitas Islam Negeri Walisongo Semarang." }
     ] },
     { bab: "BAB II — Azas", pasal: [
@@ -246,7 +246,8 @@ const AD_ART = {
       { no: "Pasal 9", judul: "Anggota", isi: "Anggota ISMARO adalah mahasiswa asal daerah Kabupaten Tuban yang terdaftar di Universitas Islam Negeri Walisongo Semarang, terdiri dari:", list: [
         "Anggota biasa",
         "Anggota luar biasa",
-        "Anggota kehormatan"
+        "Anggota kehormatan",
+        "Anggota partisipan"
       ] }
     ] },
     { bab: "BAB VI — Kedaulatan", pasal: [
@@ -254,8 +255,11 @@ const AD_ART = {
     ] },
     { bab: "BAB VII — Struktur Organisasi", pasal: [
       { no: "Pasal 11", judul: "Kekuasaan", isi: "Kekuasaan tertinggi ditentukan melalui konggres ISMARO." },
-      { no: "Pasal 12", judul: "Kepemimpinan", isi: "Kepemimpinan tertinggi dipegang oleh Pengurus ISMARO UIN Walisongo Semarang." },
-      { no: "Pasal 13", judul: "Dewan Penasihat", isi: "Dewan penasihat berasal dari demisioner." }
+      { no: "Pasal 12", judul: "Kepemimpinan", isi: "Kepemimpinan tertinggi dipegang oleh Ketua Umum ISMARO UIN Walisongo Semarang." },
+      { no: "Pasal 13", judul: "Dewan Penasihat", list: [
+        "Dewan penasihat berasal dari demisioner yang belum lulus dari UIN Walisongo Semarang",
+        "Dewan penasihat mempunyai kewenangan menasehati kepengurusan selama satu periode"
+      ] },
     ] },
     { bab: "BAB VIII — Keuangan dan Harta Benda", pasal: [
       { no: "Pasal 14", judul: "Keuangan dan Harta Benda", list: [
@@ -278,27 +282,36 @@ const AD_ART = {
       { no: "Pasal I", judul: "Anggota Biasa", isi: "Mahasiswa aktif UIN Walisongo Semarang yang berasal dari Kabupaten Tuban yang terdaftar dalam keanggotaan ISMARO." },
       { no: "Pasal II", judul: "Anggota Luar Biasa", isi: "Anggota biasa yang ditetapkan sebagai pengurus atas wewenang Ketua Umum." },
       { no: "Pasal III", judul: "Anggota Kehormatan", isi: "Mereka yang berjasa dan berpartisipasi pada organisasi ISMARO." },
-      { no: "Pasal IV", judul: "Syarat Keanggotaan", list: [
+      { no: "Pasal IV", judul: "Anggota Partisipan", isi: "Mahasiswa aktif UIN Walisongo Semarang yang terdaftar dalam keanggotaan ISMARO." },
+      { no: "Pasal V", judul: "Syarat Keanggotaan", list: [
         "Mahasiswa aktif UIN Walisongo Semarang yang berasal dari Kabupaten Tuban",
         "Mengikuti makrab atau aktif dalam organisasi ISMARO"
       ] },
-      { no: "Pasal V", judul: "Masa Keanggotaan", isi: "Masa keanggotaan berakhir terhitung setelah:", list: [
+      { no: "Pasal VI", judul: "Masa Keanggotaan", isi: "Masa keanggotaan berakhir terhitung setelah:", list: [
         "Lulus dari UIN Walisongo Semarang",
         "Meninggal dunia",
         "Mengundurkan diri secara tertulis yang disampaikan kepada pengurus harian"
       ] },
-      { no: "Pasal VI", judul: "Hak", list: [
+      { no: "Pasal VII", judul: "Hak", list: [
         "Anggota biasa dan anggota luar biasa berhak mendapatkan pendidikan dan kebebasan berpendapat",
-        "Setiap anggota biasa dan luar biasa mempunyai hak berbicara, hak suara, partisipasi, dan hak untuk dipilih"
+        "Anggota partisipan hanya mendapatkan kebebasan berpendapat",
+        "Setiap anggota biasa dan luar biasa mempunyai hak berbicara, hak suara, partisipasi, hak untuk memilih, dan hak untuk dipilih"
       ] },
-      { no: "Pasal VII", judul: "Kewajiban", list: [
+      { no: "Pasal VIII", judul: "Kewajiban", list: [
         "Setiap anggota berkewajiban menjaga nama baik organisasi",
         "Setiap anggota berkewajiban taat dan patuh pada AD/ART",
         "Setiap anggota berkewajiban membayar iuran pangkal dan iuran pokok",
         "Setiap anggota berkewajiban menjalankan visi dan misi organisasi",
         "Setiap anggota berkewajiban terlibat aktif dalam kegiatan organisasi",
         "Setiap anggota berkewajiban menjaga simbol-simbol organisasi"
-      ] }
+      ] },
+      { no: "Pasal IX", judul: "Sanksi Keanggotaan", list: [
+        "Teguran",
+        "Peringatan secara tertulis",
+        "Pemberhentian anggota dapat diputuskan oleh Ketua, pengurus, dan Dewan Penasehat",
+        "Pengembalian atribut yang berhubungan dengan organisasi ISMARO"
+      ] },
+      { no: "Pasal X", judul: "Pemberhentian Anggota", isi: "Anggota diberhentikan apabila tidak menghiraukan sanksi keanggotaan." }
     ] },
     { bab: "BAB II — Struktur Kekuasaan", pasal: [
       { no: "Bagian I", judul: "Konggres", list: [
@@ -306,6 +319,68 @@ const AD_ART = {
         "Konggres memegang kekuasaan tertinggi",
         "Konggres diadakan satu tahun sekali",
         "Apabila dalam keadaan luar biasa, konggres dapat diadakan menyimpang dalam ketentuan pasal tersebut ayat 3"
+      ] }
+    ] },
+    { bab: "BAB III — Struktur Organisasi", pasal: [
+      { no: "Pasal I", judul: "Struktur Organisasi ISMARO Tuban", list: [
+        "Dewan Pembina",
+        "Ketua Umum",
+        "Sekretaris Umum",
+        "Bendahara Umum",
+        "Divisi: Sosial dan Kemasyarakatan",
+        "Divisi: Keanggotaan",
+        "Divisi: Komunikasi dan Informasi",
+        "Divisi: Ekonomi Kreatif"
+      ] },
+      { no: "Pasal II", judul: "Pengurus", isi: "Kepengurusan organisasi ini dipimpin oleh Ketua Umum selama satu tahun dan dapat dipilih kembali maksimal dua periode." },
+      { no: "Pasal III", judul: "Syarat Personalia Pengurus", isi: "Syarat personalia ISMARO:", list: [
+        "Menjadi anggota ISMARO",
+        "Aktif mengikuti kegiatan ISMARO",
+        "Berkomitmen menjadi pengurus ISMARO",
+        "Sehat jasmani dan rohani"
+      ] },
+      { no: "Pasal IV", judul: "Dewan Penasehat", isi: "Dewan Penasehat terdiri dari Dewan Pembina." },
+      { no: "Pasal V", judul: "Alumni", isi: "Alumni terdiri dari anggota ISMARO Tuban yang telah menyelesaikan studinya di UIN Walisongo Semarang." }
+    ] },
+    { bab: "BAB IV — Tata Cara Pemilihan", isi: [
+      "Tata cara pemilihan dilakukan secara musyawarah untuk mufakat."
+    ], pasal: [
+      { no: "Pasal I", judul: "Hak Bicara dan Suara", isi: "Semua anggota ISMARO memiliki hak untuk menyampaikan pendapat dan memberikan suaranya sesuai dengan hati nuraninya." },
+      { no: "Pasal II", judul: "Mekanisme Pemilihan", list: [
+        "Yang berhak memilih adalah semua anggota ISMARO yang mengikuti konggres",
+        "Hak suara tidak boleh diwakilkan"
+      ] }
+    ] },
+    { bab: "BAB V — Keuangan dan Harta Benda", pasal: [
+      { no: "Pasal I", judul: "Pengelolaan", isi: "Penyimpanan dan pengeluaran dana yang dikumpulkan harus terlebih dahulu disetujui oleh Ketua Umum dan Bendahara Umum." }
+    ] },
+    { bab: "BAB VI — Lambang dan Atribut Organisasi", pasal: [
+      { no: "Butir 1–6", judul: "Makna Lambang", list: [
+        "Kuda yang saling berhadapan merupakan simbol kota Tuban",
+        "Tugu Muda melambangkan keberadaan mahasiswa ISMARO di Semarang",
+        "Logo UIN Walisongo melambangkan ISMARO adalah organisasi mahasiswa di UIN Walisongo",
+        "Tulisan ISMARO adalah nama organisasi Ikatan Silaturahmi Mahasiswa Ronggolawe Tuban",
+        "Bentuk logo segitiga adalah simbol dari iman, Islam, dan ihsan",
+        "Warna kuning keemasan menjadi tinta emas bagi generasi ke depan"
+      ] }
+    ] },
+    { bab: "BAB VII — Perubahan Anggaran Rumah Tangga", pasal: [
+      { no: "Pasal I", judul: "Perubahan", list: [
+        "Perubahan Anggaran Rumah Tangga ditetapkan pada sidang Anggaran Dasar dan Anggaran Rumah Tangga (AD/ART)",
+        "Perubahan Anggaran Rumah Tangga dianggap sah jika disetujui oleh seluruh forum peserta sidang AD/ART"
+      ] }
+    ] },
+    { bab: "Aturan Tambahan — Daftar Konggres", pasal: [
+      { no: "Ketentuan", judul: "Hal-hal yang Belum Diatur", isi: "Hal-hal yang belum diatur dalam Anggaran Rumah Tangga akan ditetapkan pada konggres-konggres berikut:", list: [
+        "Konggres I di Semarang, di Aula Asrama FUPK, tanggal 19 November 2017",
+        "Konggres II di Semarang, di Kampus 3 UIN Walisongo, tanggal 22 Desember 2018",
+        "Konggres III di Semarang, di Aula Asrama FUPK, tanggal 8 Maret 2020",
+        "Konggres IV di Tuban, di MWCNU Leran Senori, tanggal 23 Januari 2021",
+        "Konggres V di Semarang, di Aula Asrama FUPK, tanggal 13 November 2021",
+        "Konggres VI di Semarang, di Kantor MWC NU 2 Palir, tanggal 23 Oktober 2022",
+        "Konggres VII di Semarang, di Mushola FDK UIN Walisongo, tanggal 11 November 2023",
+        "Konggres VIII di Semarang, di Balai Desa Purwoyoso, tanggal 26 Oktober 2024",
+        "Konggres IX di Semarang, di Balai RW 05 Kedungpane, tanggal 04 Oktober 2025"
       ] }
     ] }
   ],
@@ -351,7 +426,7 @@ const AD_ART = {
       "3. Pemilihan Presidium Sidang dilaksanakan melalui pemilihan langsung oleh peserta sidang: menentukan tiga orang dari suara terbanyak; apabila terdapat jumlah suara yang sama maka dilakukan pemilihan ulang untuk jumlah suara yang sama."
     ] },
     { bab: "Tata Tertib Pemilihan Ketua Umum", isi: [
-      "1. Pemilihan Ketua Umum dilakukan secara tertib, bebas, jujur, dan adil, dengan dua tahap: Tahap Pencalonan (setiap peserta berhak mencalonkan diri) dan Tahap Pemilihan (setiap peserta memilih satu calon).",
+      "1. Pemilihan Ketua Umum dilakukan secara tertib, bebas, jujur, dan adil, dengan dua tahap: Tahap Pencalonan (setiap peserta berhak mencalonkan diri; pencalonan dilaksanakan paling lambat H-7 sebelum konggres) dan Tahap Pemilihan (setiap peserta memilih satu calon; setiap calon memaparkan visi-misi di depan forum).",
       "2. Calon dengan suara terbanyak dinyatakan sebagai Ketua Umum terpilih; bila jumlah suara sama diadakan pemilihan ulang; bila hanya terdapat satu calon maka langsung dinyatakan terpilih. Ketua Umum terpilih harus siap diturunkan bila tidak mampu mengemban amanah organisasi."
     ], pasal: [
       { no: "Syarat Formateur", judul: "Syarat-syarat Calon Ketua Umum", list: [
@@ -359,6 +434,7 @@ const AD_ART = {
         "Mampu membaca Al-Qur'an dengan baik dan benar serta dibuktikan di depan forum",
         "Sehat secara jasmani maupun rohani",
         "Berdedikasi tinggi dan bisa menjaga nama baik organisasi",
+        "Tidak terikat menjadi ketua umum pada organisasi lain",
         "Bersedia menunda kelulusannya demi kelancaran organisasi selama kepengurusannya",
         "Setiap calon Ketua Umum harus menyatakan kesediannya di depan forum sidang"
       ] }
