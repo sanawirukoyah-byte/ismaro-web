@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISMARO — Ikatan Silaturahmi Mahasiswa Ronggolawe</title>
+<meta name="description" content="Portal organisasi ISMARO (Ikatan Silaturahmi Mahasiswa Ronggolawe): struktur kepengurusan, divisi, kalender hari libur Indonesia, dan agenda kegiatan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+<body>
+
+<div id="editBanner" class="edit-banner" hidden>
+  <span class="dot"></span>
+  <strong>Mode Edit aktif.</strong> Ubah jabatan, nama, dan divisi sesuka hati. Semua perubahan tersimpan otomatis di perangkat ini.
+  <button class="btn-ghost" data-act="toggle-edit">Selesai</button>
+</div>
+
+<header class="topbar" id="top">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#beranda">
+      <img class="crest" src="assets/logo.png" alt="Logo ISMARO">
+      <span class="brand-txt">
+        <b>ISMARO</b>
+        <i>Ikatan Silaturahmi Mahasiswa Ronggolawe</i>
+      </span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#beranda">Beranda</a>
+      <a href="#profil">Profil</a>
+      <a href="#struktur">Struktur</a>
+      <a href="#divisi">Divisi</a>
+      <a href="#adart">AD/ART</a>
+      <a href="#berita">Berita</a>
+      <a href="#kalender">Kalender</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+    <button class="btn-edit" id="btnEdit" data-act="toggle-edit">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+      <span>Edit</span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ BERANDA ============ -->
+<section id="beranda" class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <span class="pill">Organisasi Daerah &middot; Bumi Wali</span>
+      <h1>Berbuat untuk daerah,<br>bertumbuh bersama keluarga.</h1>
+      <p class="lead">Portal resmi ISMARO &mdash; satu tempat untuk mengenal kepengurusan, memetakan divisi, dan menjaga agenda lewat kalender yang tidak pernah terlewat.</p>
+      <div class="hero-cta">
+        <a class="btn btn-gold" href="#struktur">Lihat Struktur</a>
+        <a class="btn btn-line" href="#kalender" id="btnKalender">Kalender</a>
+      </div>
+      <dl class="hero-stat">
+        <div><dt id="statPeriod">2026/2027</dt><dd>Masa Kepengurusan</dd></div>
+        <div><dt id="statBph">6</dt><dd>Badan Pengurus</dd></div>
+        <div><dt id="statDivisi">6</dt><dd>Divisi</dd></div>
+      </dl>
+    </div>
+    <aside class="hero-card" id="heroCard"></aside>
+  </div>
+</section>
+
+<!-- ============ PROFIL ============ -->
+<section id="profil" class="sec sec-alt">
+  <div class="wrap">
+    <div class="sec-head split">
+      <div>
+        <span class="kicker">Tentang Kami</span>
+        <h2 class="sec-title">Profil Organisasi</h2>
+        <p class="sec-desc">Sejarah singkat, visi, misi, dan nilai yang kami pegang.</p>
+      </div>
+      <div class="sec-tools">
+        <button class="btn btn-line sm edit-only" data-act="edit-meta">Ubah Identitas</button>
+      </div>
+    </div>
+    <div class="profil-grid">
+      <article class="card prose" id="profilSejarah"></article>
+      <div class="visi-wrap">
+        <article class="card visi" id="profilVisi"></article>
+        <article class="card misi" id="profilMisi"></article>
+      </div>
+    </div>
+    <div class="nilai-head">
+      <h3 class="side-title">Nilai Utama</h3>
+      <button class="btn btn-line sm edit-only" data-act="add-nilai">+ Tambah Nilai</button>
+    </div>
+    <div class="nilai-row" id="nilaiRow"></div>
+  </div>
+</section>
+
+<!-- ============ STRUKTUR ============ -->
+<section id="struktur" class="sec">
+  <div class="wrap">
+    <div class="sec-head split">
+      <div>
+        <span class="kicker">Kepengurusan</span>
+        <h2 class="sec-title">Struktur Organisasi</h2>
+        <p class="sec-desc" data-ed="catatanStruktur">Alur dari Ketua Umum hingga seluruh divisi.</p>
+      </div>
+      <div class="sec-tools">
+        <button class="btn btn-line sm" data-act="print-struktur">Cetak</button>
+        <button class="btn btn-line sm edit-only" data-act="add-bph">+ Tambah Anggota</button>
+      </div>
+    </div>
+    <div class="rail-wrap">
+      <div class="rail" id="strukturRail"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIVISI ============ -->
+<section id="divisi" class="sec sec-alt">
+  <div class="wrap">
+    <div class="sec-head split">
+      <div>
+        <span class="kicker">Ruang Program</span>
+        <h2 class="sec-title">Divisi Program</h2>
+        <p class="sec-desc" data-ed="catatanDivisi">Setiap divisi punya fokus, tugas, dan anggota yang bisa kamu atur sendiri.</p>
+      </div>
+      <div class="sec-tools">
+        <button class="btn btn-line sm edit-only" data-act="add-divisi">+ Tambah Divisi</button>
+      </div>
+    </div>
+    <div class="divisi-grid" id="divisiGrid"></div>
+  </div>
+</section>
+
+<!-- ============ AD/ART ============ -->
+<section id="adart" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Dasar Organisasi</span>
+      <h2 class="sec-title">Anggaran Dasar &amp; Rumah Tangga</h2>
+      <p class="sec-desc">Naskah resmi AD/ART ISMARO beserta tata tertib persidangan Konggres I.</p>
+    </div>
+    <div class="adart" id="adartBody"></div>
+  </div>
+</section>
+
+<!-- ============ BERITA ============ -->
+<section id="berita" class="sec sec-alt">
+  <div class="wrap">
+    <div class="sec-head split">
+      <div>
+        <span class="kicker">Kabar Terbaru</span>
+        <h2 class="sec-title">Berita &amp; Artikel</h2>
+        <p class="sec-desc">Tulisan dan liputan kegiatan ISMARO dari blog resmi.</p>
+      </div>
+      <div class="sec-tools">
+        <a class="btn btn-line sm" href="https://ismarotuban.blogspot.com/" target="_blank" rel="noopener">Blog Resmi</a>
+      </div>
+    </div>
+    <div class="berita-grid" id="beritaGrid"></div>
+  </div>
+</section>
+
+<!-- ============ KALENDER ============ -->
+<section id="kalender" class="sec">
+  <div class="wrap">
+    <div class="sec-head split">
+      <div>
+        <span class="kicker">Agenda &amp; Hari Besar</span>
+        <h2 class="sec-title">Kalender ISMARO</h2>
+        <p class="sec-desc">Hari libur nasional, cuti bersama, hari penting Indonesia, kalender Hijriah, serta agenda internal organisasi.</p>
+      </div>
+      <div class="sec-tools">
+        <button class="btn btn-line sm edit-only" data-act="add-event">+ Tambah Agenda</button>
+      </div>
+    </div>
+
+    <div class="kal-layout">
+      <div class="card kal-card">
+        <div class="kal-head">
+          <button class="nav-btn" data-act="prev-month" aria-label="Bulan sebelumnya">&#8249;</button>
+          <div class="kal-title">
+            <select id="bulanSel" class="sel" aria-label="Pilih bulan"></select>
+            <select id="tahunSel" class="sel" aria-label="Pilih tahun"></select>
+          </div>
+          <button class="nav-btn" data-act="next-month" aria-label="Bulan berikutnya">&#8250;</button>
+          <button class="btn btn-line sm" data-act="today">Hari ini</button>
+        </div>
+        <div class="kal-legend" id="kalLegend"></div>
+        <div class="kal-grid" id="kalGrid"></div>
+      </div>
+
+      <aside class="kal-side">
+        <div class="card">
+          <h3 class="side-title">Agenda Terdekat</h3>
+          <ul class="agenda-list" id="agendaList"></ul>
+        </div>
+        <div class="card">
+          <h3 class="side-title" id="liburTitle">Hari Libur 2026</h3>
+          <div class="libur-scroll" id="liburList"></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KONTAK ============ -->
+<section id="kontak" class="sec sec-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Hubungi Kami</span>
+      <h2 class="sec-title">Sekretariat &amp; Kantor</h2>
+    </div>
+    <div class="kontak-grid" id="kontakGrid"></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img class="foot-logo" src="assets/logo.png" alt="Logo ISMARO">
+      <b>ISMARO</b>
+      <i id="footKepanjangan"></i>
+      <span id="footTagline"></span>
+    </div>
+    <div>
+      <h4>Tautan Cepat</h4>
+      <ul class="foot-links" id="footLinks"></ul>
+    </div>
+    <div>
+      <h4>Hubungi Kami</h4>
+      <ul class="foot-contact" id="footContact"></ul>
+    </div>
+    <div>
+      <h4>Ikuti Kami</h4>
+      <div class="foot-sos" id="footSos"></div>
+      <button class="btn btn-line sm foot-reset" data-act="reset">Reset</button>
+    </div>
+  </div>
+  <div class="wrap foot-bar">
+    <span id="footCopy"></span>
+  </div>
+</footer>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal-card">
+    <header><h3 id="modalTitle">Judul</h3><button class="x" data-act="close-modal" aria-label="Tutup">&times;</button></header>
+    <form id="modalForm"></form>
+    <footer>
+      <button type="button" class="btn btn-line sm" data-act="close-modal">Batal</button>
+      <button type="submit" form="modalForm" class="btn btn-gold sm">Simpan</button>
+    </footer>
+  </div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
