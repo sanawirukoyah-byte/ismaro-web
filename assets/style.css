@@ -393,6 +393,9 @@ body.editing .pcard .del,body.editing .pcard .pen{display:grid}
 .bcard b{color:var(--navy);font-size:15.5px;line-height:1.4;font-weight:700}
 .bcard .bl{margin-top:auto;font-size:13px;font-weight:700;color:var(--muted)}
 
+.ad-acts{display:inline-flex;gap:6px;margin-left:10px;vertical-align:middle}
+.ad-acts .linkbtn{padding:3px 9px;font-size:11px}
+
 /* ---------- Responsive ---------- */
 @media (max-width:960px){
   .hero-in{grid-template-columns:1fr}
@@ -415,7 +418,7 @@ body.editing .pcard .del,body.editing .pcard .pen{display:grid}
 
 /* ---------- Print ---------- */
 @media print{
-  .topbar,.foot,.sec-tools,.edit-banner,.modal,.toast,.hero-cta{display:none !important}
+  .topbar,.foot,.sec-tools,.edit-banner,.modal,.toast,.hero-cta,.linkbtn{display:none !important}
   body{background:#fff}
   .sec{padding:20px 0;break-inside:avoid}
   .sec-alt{background:#fff}

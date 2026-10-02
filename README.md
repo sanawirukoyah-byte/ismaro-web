@@ -46,7 +46,7 @@ Yang bisa diedit:
 | Struktur | Keterangan bagian struktur (lewat Mode Edit → Ubah Identitas) |
 | BPH | Tambah / ubah / hapus anggota beserta jabatan dan deskripsi tugas |
 | Divisi | Tambah / ubah / hapus divisi, ganti nama, fokus, tugas, warna; tambah / hapus anggota; atur urutan |
-| AD/ART | Naskah Anggaran Dasar, Anggaran Rumah Tangga, dan Tata Tertib Konggres I (dari blog resmi; diedit di `assets/data.js`) — dilengkapi ketentuan revisi AD/ART Kongres IX 2025 (dokumen resmi), penomoran tetap mengikuti naskah Konggres I |
+| AD/ART | Naskah Anggaran Dasar, Anggaran Rumah Tangga, dan Tata Tertib Konggres I (dari blog resmi; diedit di `assets/data.js`) — dilengkapi ketentuan revisi AD/ART Kongres IX 2025 (dokumen resmi), penomoran tetap mengikuti naskah Konggres I. Lewat Mode Edit: tambah / ubah / hapus BAB dan pasal di bagian AD & ART |
 | Berita | Kartu artikel terbaru — diambil langsung dari feed blog resmi saat daring; `ARTIKEL_AWAL` di `assets/data.js` hanya cadangan saat luring |
 | Kontak | Alamat, email, WhatsApp, Instagram, blog resmi, tautan peta |
 | Kalender | Tambah agenda (tombol `+` pada sel kalender, atau tombol *+ Tambah Agenda*), hapus agenda |

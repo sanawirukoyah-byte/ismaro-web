@@ -57,7 +57,8 @@ function defaultState(){
     bph: clone(BPH_AWAL),
     divisi: clone(DIVISI_AWAL),
     nilai: clone(NILAI_AWAL),
-    agenda: clone(AGENDA_AWAL)
+    agenda: clone(AGENDA_AWAL),
+    adart: clone(AD_ART)
   };
   return base;
 }
@@ -76,7 +77,8 @@ function normalize(d){
     bph: Array.isArray(d.bph) ? d.bph : base.bph,
     divisi: divisi,
     nilai: Array.isArray(d.nilai) ? d.nilai : base.nilai,
-    agenda: Array.isArray(d.agenda) ? d.agenda.filter(a => a && typeof a.tanggal === "string") : base.agenda
+    agenda: Array.isArray(d.agenda) ? d.agenda.filter(a => a && typeof a.tanggal === "string") : base.agenda,
+    adart: (d.adart && Array.isArray(d.adart.ad) && Array.isArray(d.adart.art)) ? d.adart : base.adart
   };
 }
 function load(){
@@ -327,11 +329,23 @@ function renderDivisi(){
 }
 
 /* ---- AD/ART ---- */
-function adBabHtml(b){
-  let h = '<div class="ad-bab"><h4>' + esc(b.bab) + '</h4>';
+function adBabHtml(b, i, target){
+  const ed = editMode && target;
+  let h = '<div class="ad-bab"><h4>' + esc(b.bab) +
+    (ed ? '<span class="acts ad-acts">' +
+      '<button class="linkbtn" data-act="add-pasal" data-target="' + target + '" data-bab="' + i + '">+ Pasal</button>' +
+      '<button class="linkbtn" data-act="edit-bab" data-target="' + target + '" data-bab="' + i + '">Ubah</button>' +
+      '<button class="linkbtn danger" data-act="del-bab" data-target="' + target + '" data-bab="' + i + '">Hapus</button>' +
+      "</span>" : "") +
+    "</h4>";
   if(b.isi) h += (Array.isArray(b.isi) ? b.isi : [b.isi]).map(t => '<p>' + esc(t) + '</p>').join("");
-  (b.pasal || []).forEach(p => {
-    h += '<div class="pasal"><div class="pasal-head">' + esc(p.no) + ' &mdash; ' + esc(p.judul) + '</div>';
+  (b.pasal || []).forEach((p, j) => {
+    h += '<div class="pasal"><div class="pasal-head">' + esc(p.no) + ' &mdash; ' + esc(p.judul) +
+      (ed ? '<span class="acts ad-acts">' +
+        '<button class="linkbtn" data-act="edit-pasal" data-target="' + target + '" data-bab="' + i + '" data-p="' + j + '">Ubah</button>' +
+        '<button class="linkbtn danger" data-act="del-pasal" data-target="' + target + '" data-bab="' + i + '" data-p="' + j + '">Hapus</button>' +
+        "</span>" : "") +
+      "</div>";
     if(p.isi) h += '<p>' + esc(p.isi) + '</p>';
     if(p.list) h += '<ol>' + p.list.map(li => '<li>' + esc(li) + '</li>').join("") + '</ol>';
     h += '</div>';
@@ -339,12 +353,17 @@ function adBabHtml(b){
   return h + '</div>';
 }
 function renderAdArt(){
-  const a = AD_ART;
+  const a = state.adart;
   $("#adartBody").innerHTML =
     '<p class="ad-meta">Naskah resmi organisasi &mdash; Anggaran Dasar disahkan pada Konggres I, Semarang, 19 November 2017.</p>' +
-    '<h3 class="ad-doc-title">Anggaran Dasar</h3>' + a.ad.map(adBabHtml).join("") +
-    '<h3 class="ad-doc-title">Anggaran Rumah Tangga</h3>' + a.art.map(adBabHtml).join("") +
-    '<h3 class="ad-doc-title">Tata Tertib Persidangan Konggres I</h3>' + a.tatib.map(adBabHtml).join("") +
+    '<h3 class="ad-doc-title">Anggaran Dasar' +
+      (editMode ? ' <button class="linkbtn" data-act="add-bab" data-target="ad">+ BAB</button>' : "") +
+    "</h3>" + a.ad.map((b, i) => adBabHtml(b, i, "ad")).join("") +
+    '<h3 class="ad-doc-title">Anggaran Rumah Tangga' +
+      (editMode ? ' <button class="linkbtn" data-act="add-bab" data-target="art">+ BAB</button>' : "") +
+    "</h3>" + a.art.map((b, i) => adBabHtml(b, i, "art")).join("") +
+    '<h3 class="ad-doc-title">Tata Tertib Persidangan Konggres I</h3>' +
+    a.tatib.map(b => adBabHtml(b)).join("") +
     '<p class="ad-src">Sumber naskah: <a href="' + esc(a.sumberAdArt) + '" target="_blank" rel="noopener">AD/ART ISMARO</a> dan ' +
     '<a href="' + esc(a.sumberTatib) + '" target="_blank" rel="noopener">Tata Tertib Konggres I</a> di blog resmi ISMARO Tuban.</p>';
 }
@@ -753,6 +772,79 @@ document.addEventListener("click", ev => {
       save(); render(); toast("Identitas diperbarui");
     });
     break;
+
+  /* --- AD/ART --- */
+  case "add-bab": {
+    const t = btn.dataset.target;
+    openModal("Tambah BAB — " + (t === "ad" ? "Anggaran Dasar" : "Anggaran Rumah Tangga"), [
+      { label:"Nama BAB", name:"bab" }
+    ], d => {
+      state.adart[t].push({ bab: (d.bab || "").trim() || "BAB Baru", pasal: [] });
+      save(); render(); toast("BAB ditambahkan");
+    });
+    break;
+  }
+  case "edit-bab": {
+    const t = btn.dataset.target, i = +btn.dataset.bab;
+    openModal("Ubah Nama BAB", [
+      { label:"Nama BAB", name:"bab", value: state.adart[t][i].bab }
+    ], d => {
+      state.adart[t][i].bab = (d.bab || "").trim() || state.adart[t][i].bab;
+      save(); render(); toast("BAB diperbarui");
+    });
+    break;
+  }
+  case "del-bab": {
+    const t = btn.dataset.target, i = +btn.dataset.bab;
+    if(!confirm('Hapus BAB "' + state.adart[t][i].bab + '" beserta seluruh isinya?')) break;
+    state.adart[t].splice(i, 1);
+    save(); render(); toast("BAB dihapus");
+    break;
+  }
+  case "add-pasal": {
+    const t = btn.dataset.target, i = +btn.dataset.bab;
+    openModal("Tambah Pasal — " + state.adart[t][i].bab, [
+      { label:"Nomor (mis. Pasal 18)", name:"no" },
+      { label:"Judul pasal", name:"judul" },
+      { label:"Isi (satu paragraf; kosongkan jika memakai poin)", name:"isi", type:"textarea" },
+      { label:"Poin-poin (satu baris satu poin; kosongkan jika tidak)", name:"list", type:"textarea" }
+    ], d => {
+      const p = { no: (d.no || "").trim() || "Pasal Baru", judul: (d.judul || "").trim() || "Tanpa Judul" };
+      if((d.isi || "").trim()) p.isi = d.isi.trim();
+      const lst = (d.list || "").split("\n").map(s => s.trim()).filter(Boolean);
+      if(lst.length) p.list = lst;
+      state.adart[t][i].pasal = state.adart[t][i].pasal || [];
+      state.adart[t][i].pasal.push(p);
+      save(); render(); toast("Pasal ditambahkan");
+    });
+    break;
+  }
+  case "edit-pasal": {
+    const t = btn.dataset.target, i = +btn.dataset.bab, j = +btn.dataset.p;
+    const p = state.adart[t][i].pasal[j];
+    openModal("Ubah Pasal — " + p.no, [
+      { label:"Nomor", name:"no", value: p.no },
+      { label:"Judul pasal", name:"judul", value: p.judul },
+      { label:"Isi (satu paragraf)", name:"isi", type:"textarea", value: p.isi || "" },
+      { label:"Poin-poin (satu baris satu poin)", name:"list", type:"textarea", value: (p.list || []).join("\n") }
+    ], d => {
+      p.no = (d.no || "").trim() || p.no;
+      p.judul = (d.judul || "").trim() || p.judul;
+      const isiBaru = (d.isi || "").trim();
+      if(isiBaru) p.isi = isiBaru; else delete p.isi;
+      const lst = (d.list || "").split("\n").map(s => s.trim()).filter(Boolean);
+      if(lst.length) p.list = lst; else delete p.list;
+      save(); render(); toast("Pasal diperbarui");
+    });
+    break;
+  }
+  case "del-pasal": {
+    const t = btn.dataset.target, i = +btn.dataset.bab, j = +btn.dataset.p;
+    if(!confirm('Hapus "' + state.adart[t][i].pasal[j].no + " — " + state.adart[t][i].pasal[j].judul + '"?')) break;
+    state.adart[t][i].pasal.splice(j, 1);
+    save(); render(); toast("Pasal dihapus");
+    break;
+  }
 
   /* --- Kalender --- */
   case "prev-month": geserBulan(-1); break;
