@@ -73,8 +73,12 @@ function normalize(d){
     if(!Array.isArray(v.anggota)) v.anggota = [];
     return v;
   }) : base.divisi;
+  const igBaru = base.meta.ig;
+  const meta = Object.assign(base.meta, (d.meta && typeof d.meta === "object") ? d.meta : {});
+  // Migrasi: URL Instagram lama (default versi sebelumnya) → profil resmi baru
+  if(meta.ig === "https://www.instagram.com/ismaro.uin.walisongo") meta.ig = igBaru;
   return {
-    meta: Object.assign(base.meta, (d.meta && typeof d.meta === "object") ? d.meta : {}),
+    meta: meta,
     bph: Array.isArray(d.bph) ? d.bph : base.bph,
     divisi: divisi,
     nilai: Array.isArray(d.nilai) ? d.nilai : base.nilai,
