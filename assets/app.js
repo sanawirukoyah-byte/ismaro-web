@@ -48,7 +48,8 @@ function defaultState(){
       alamat: "Sekretariat ISMARO, UIN Walisongo Semarang",
       email: "sekretariat@ismaro.id",
       whatsapp: "0812-0000-0000",
-      instagram: "@ismaro_tuban",
+      instagram: "@ismarouinwalisongo",
+      ig: "https://www.instagram.com/ismarouinwalisongo?stkn=cm9qcDBnMGt2cXFa",
       blog: "https://ismarotuban.blogspot.com/",
       maps: "https://maps.google.com/?q=UIN+Walisongo+Semarang",
       footerTagline: "Organisasi Mahasiswa Daerah Kabupaten Tuban x Nurcreative",
@@ -432,7 +433,7 @@ function renderFooter(){
   $("#footContact").innerHTML = lines.map(x =>
     "<li><b>" + esc(x[0]) + "</b> " + esc(x[1]) + "</li>").join("");
   $("#footSos").innerHTML = [
-    m.instagram ? '<a class="sos" href="https://instagram.com/' + esc(String(m.instagram).replace(/^@/, "")) +
+    m.instagram ? '<a class="sos" href="' + esc(m.ig || ("https://instagram.com/" + String(m.instagram).replace(/^@/, ""))) +
       '" target="_blank" rel="noopener">Instagram</a>' : "",
     m.whatsapp ? '<a class="sos" href="https://wa.me/' + esc(String(m.whatsapp).replace(/\D/g, "")) +
       '" target="_blank" rel="noopener">WhatsApp</a>' : "",
@@ -447,7 +448,7 @@ function renderKontak(){
     { lb:"Alamat Sekretariat", vl:m.alamat, href:m.maps, ic:"&#127968;", f:"alamat" },
     { lb:"Email",             vl:m.email,  href:"mailto:" + m.email, ic:"&#9993;", f:"email" },
     { lb:"WhatsApp",          vl:m.whatsapp, href:"https://wa.me/" + String(m.whatsapp).replace(/\D/g, ""), ic:"&#128172;", f:"whatsapp" },
-    { lb:"Instagram",         vl:m.instagram, href:"https://instagram.com/" + String(m.instagram).replace(/@/g, ""), ic:"&#128247;", f:"instagram" },
+    { lb:"Instagram",         vl:m.instagram, href: m.ig || ("https://instagram.com/" + String(m.instagram).replace(/@/g, "")), ic:"&#128247;", f:"instagram" },
     { lb:"Blog Resmi",        vl:m.blog, href:m.blog, ic:"&#128214;", f:"blog" }
   ];
   $("#kontakGrid").innerHTML = items.map(k => {
@@ -749,6 +750,7 @@ document.addEventListener("click", ev => {
     const f = btn.dataset.f;
     const fields = [{ label: btn.dataset.j, name:f, value: state.meta[f] }];
     if(f === "alamat") fields.push({ label:"Tautan peta (URL)", name:"maps", value: state.meta.maps });
+    if(f === "instagram") fields.push({ label:"Tautan profil (URL)", name:"ig", value: state.meta.ig });
     openModal("Ubah " + btn.dataset.j, fields, d => {
       Object.keys(d).forEach(k => { state.meta[k] = d[k]; });
       save(); render(); toast("Kontak diperbarui");
